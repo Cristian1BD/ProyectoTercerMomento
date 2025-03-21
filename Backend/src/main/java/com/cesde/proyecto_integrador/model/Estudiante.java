@@ -1,4 +1,4 @@
-package main.java.com.cesde.proyecto_integrador.model;
+package com.cesde.proyecto_integrador.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
