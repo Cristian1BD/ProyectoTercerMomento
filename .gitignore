@@ -38,3 +38,38 @@ build/
 
 ### entorno virtual ###
 
+# 🔹 Ignorar el entorno virtual
+venv/
+EntornoPython/
+
+# 🔹 Ignorar archivos de caché de Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# 🔹 Ignorar archivos de configuración del entorno
+.env
+*.env
+
+# 🔹 Ignorar archivos de logs y depuración
+*.log
+logs/
+
+# 🔹 Ignorar archivos de dependencias generadas
+pip-log.txt
+pip-delete-this-directory.txt
+
+# 🔹 Ignorar archivos de compilación
+build/
+dist/
+*.egg-info/
+
+# 🔹 Ignorar configuraciones de IDEs (VS Code, PyCharm, etc.)
+.vscode/
+.idea/
+*.iml
+
+# 🔹 Ignorar archivos de bases de datos temporales
+*.sqlite3
+*.db
