@@ -1,4 +1,4 @@
-package com.Cesde.EventoIntegrador.model;
+package com.SalidasPedagogicas.Backend.model;
 
 import jakarta.persistence.*;
 import lombok.Data;

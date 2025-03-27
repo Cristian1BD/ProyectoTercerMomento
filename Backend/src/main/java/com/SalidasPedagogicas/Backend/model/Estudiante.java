@@ -1,4 +1,4 @@
-package com.Cesde.EventoIntegrador.model;
+package com.SalidasPedagogicas.Backend.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

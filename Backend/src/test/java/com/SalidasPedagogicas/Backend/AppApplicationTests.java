@@ -1,10 +1,10 @@
-package Package.name.com.cesde.proyecto_integrador;
+package com.SalidasPedagogicas.Backend;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ApplicationTests {
+class AppApplicationTests {
 
 	@Test
 	void contextLoads() {
