@@ -1,7 +1,7 @@
-package com.example.backend.controlador;
+package com.cesde.proyecto_integrador.controller;
 
-import com.example.backend.model.EstudianteFormulario;
-import com.example.backend.repository.EstudianteFormularioRepository;
+import com.cesde.proyecto_integrador.model.EstudianteFormulario;
+import com.cesde.proyecto_integrador.repository.EstudianteFormularioRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;

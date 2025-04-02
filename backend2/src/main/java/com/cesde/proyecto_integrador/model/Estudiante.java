@@ -1,11 +1,8 @@
-package com.example.backend.model;
+package com.cesde.proyecto_integrador.model;
 
 import jakarta.persistence.*;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.persistence.Id;
 
 @Table(name = "Estudiante") // Especificamos el nombre de la tabla en la BD
 @Entity
@@ -74,8 +71,4 @@ public class Estudiante {
     public void setEmail(String email) {
         this.email = email;
     }
-
-    @OneToOne
-    
-
 }

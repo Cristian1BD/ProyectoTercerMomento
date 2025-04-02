@@ -1,4 +1,4 @@
-package com.example.backend.model;
+package com.cesde.proyecto_integrador.model;
 
 import jakarta.persistence.*;
 import lombok.Data;

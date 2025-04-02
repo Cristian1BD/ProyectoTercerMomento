@@ -1,6 +1,6 @@
-package com.example.backend.repository;
+package com.cesde.proyecto_integrador.repository;
 
-import com.example.backend.model.EstudianteFormulario;
+import com.cesde.proyecto_integrador.model.*;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
