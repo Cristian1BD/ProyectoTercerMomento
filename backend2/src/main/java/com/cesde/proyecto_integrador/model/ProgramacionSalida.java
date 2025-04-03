@@ -19,7 +19,7 @@ public class ProgramacionSalida {
 
     @ManyToOne
     @JoinColumn(name = "grupo_id", nullable = false)
-    private grupo grupo;
+    private Grupo grupo;
 
     @Column(nullable = false)
     private int numeroEstudiantes;
