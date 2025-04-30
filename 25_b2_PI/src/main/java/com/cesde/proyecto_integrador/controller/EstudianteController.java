@@ -1,62 +1,54 @@
 package com.cesde.proyecto_integrador.controller;
 
 import com.cesde.proyecto_integrador.model.Estudiante;
-import com.cesde.proyecto_integrador.repository.EstudianteRepository;
+import com.cesde.proyecto_integrador.service.EstudianteService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/estudiantes")
 @CrossOrigin(origins = "http://localhost:4200") 
 public class EstudianteController {
 
-    private final EstudianteRepository estudianteRepository;
+    private final EstudianteService estudianteService;
 
-    public EstudianteController(EstudianteRepository estudianteRepository) {
-        this.estudianteRepository = estudianteRepository;
+    public EstudianteController(EstudianteService estudianteService) {
+        this.estudianteService = estudianteService;
     }
 
     @GetMapping
     public List<Estudiante> getAllEstudiantes() {
-        return estudianteRepository.findAll();
+        return estudianteService.obtenerTodos();
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Estudiante> getEstudianteById(@PathVariable Long id) {
-        Optional<Estudiante> estudiante = estudianteRepository.findById(id);
-        return estudiante.map(ResponseEntity::ok)
-                         .orElseGet(() -> ResponseEntity.notFound().build());
+        return estudianteService.obtenerPorId(id)
+                .map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @PostMapping
-    public Estudiante createEstudiante(@RequestBody Estudiante estudiante) {
-        return estudianteRepository.save(estudiante);
+    public ResponseEntity<Estudiante> createEstudiante(@RequestBody Estudiante estudiante) {
+        Estudiante nuevoEstudiante = estudianteService.guardarEstudiante(estudiante);
+        return ResponseEntity.ok(nuevoEstudiante);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<Estudiante> updateEstudiante(@PathVariable Long id, @RequestBody Estudiante estudianteDetails) {
-        return estudianteRepository.findById(id)
-                .map(estudiante -> {
-                    estudiante.setTipoDocumento(estudianteDetails.getTipoDocumento());
-                    estudiante.setNumeroDocumento(estudianteDetails.getNumeroDocumento());
-                    estudiante.setNombre(estudianteDetails.getNombre());
-                    estudiante.setApellido(estudianteDetails.getApellido());
-                    estudiante.setEmail(estudianteDetails.getEmail());
-                    return ResponseEntity.ok(estudianteRepository.save(estudiante));
-                })
+        return estudianteService.actualizarEstudiante(id, estudianteDetails)
+                .map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Object> deleteEstudiante(@PathVariable Long id) {
-        return estudianteRepository.findById(id)
-                .map(estudiante -> {
-                    estudianteRepository.delete(estudiante);
-                    return ResponseEntity.noContent().build();
-                })
-                .orElseGet(() -> ResponseEntity.notFound().build());
+    public ResponseEntity<Void> deleteEstudiante(@PathVariable Long id) {
+        if (estudianteService.eliminarEstudiante(id)) {
+            return ResponseEntity.noContent().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 }

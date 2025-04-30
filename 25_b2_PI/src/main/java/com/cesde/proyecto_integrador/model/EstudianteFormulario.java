@@ -14,7 +14,7 @@ public class EstudianteFormulario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long id_formulario;
 
     @Column(nullable = false, length = 50)
     private String nombre;

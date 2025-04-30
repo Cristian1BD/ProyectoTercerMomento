@@ -1,74 +1,49 @@
 package com.cesde.proyecto_integrador.model;
 
+import java.time.LocalDateTime;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
 
-@Table(name = "Estudiante") // Especificamos el nombre de la tabla en la BD
+@Table(name = "Estudiante")
 @Entity
 public class Estudiante {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    
-    private Long id;
-    private String tipoDocumento;
-    private String numeroDocumento;
+    private Long id_estudiante;
 
-    @NotBlank(message = "el nombre es obligatorio")
-    private String nombre;
+    private long id_persona;
+    private long id_grupo;
+    private LocalDateTime fecha_registro;
 
-    @NotBlank(message = "el apellido es obligatorio")
-    private String apellido;
-
-    @NotBlank(message = "El correo electrónico es obligatorio")
-    @Email(message = "El correo electrónico debe ser válido")
-    private String email; 
-
-    public Long getId() {
-        return id;
+    // Getters y Setters
+    public Long getId_estudiante() {
+        return id_estudiante;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-    
-    public String getTipoDocumento() {
-        return tipoDocumento;
+    public void setId_estudiante(Long id_estudiante) {
+        this.id_estudiante = id_estudiante;
     }
 
-    public void setTipoDocumento(String tipoDocumento) {
-        this.tipoDocumento = tipoDocumento;
+    public long getId_persona() {
+        return id_persona;
     }
 
-    public String getNumeroDocumento() {
-        return numeroDocumento;
+    public void setId_persona(long id_persona) {
+        this.id_persona = id_persona;
     }
 
-    public void setNumeroDocumento(String numeroDocumento) {
-        this.numeroDocumento = numeroDocumento;
+    public long getId_grupo() {
+        return id_grupo;
     }
 
-    public String getNombre() {
-        return nombre;
+    public void setId_grupo(long id_grupo) {
+        this.id_grupo = id_grupo;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public LocalDateTime getFecha_registro() {
+        return fecha_registro;
     }
 
-    public String getApellido() {
-        return apellido;
-    }
-
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
-    }
-    
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
+    public void setFecha_registro(LocalDateTime fecha_registro) {
+        this.fecha_registro = fecha_registro;
     }
 }

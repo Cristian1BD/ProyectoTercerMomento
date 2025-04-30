@@ -4,16 +4,14 @@ import com.cesde.proyecto_integrador.model.EstudianteFormulario;
 import com.cesde.proyecto_integrador.repository.EstudianteFormularioRepository;
 
 import jakarta.validation.Valid;
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 
 import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("estudiantesFormulario")
+@RequestMapping("/api/estudiantesFormulario")
 @CrossOrigin(origins = "http://localhost:4200")
 public class EstudianteFormularioController {
 
@@ -28,9 +26,9 @@ public class EstudianteFormularioController {
         return repository.findAll();
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<EstudianteFormulario> getEstudianteById(@PathVariable Long id) {
-        return repository.findById(id)
+    @GetMapping("/{id_formulario}")
+    public ResponseEntity<EstudianteFormulario> getEstudianteById(@PathVariable Long id_formulario) {
+        return repository.findById(id_formulario)
                 .map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
@@ -41,9 +39,9 @@ public class EstudianteFormularioController {
         return ResponseEntity.status(201).body(savedEstudiante);
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<EstudianteFormulario> updateEstudiante(@PathVariable Long id, @RequestBody @Valid EstudianteFormulario estudianteDetails) {
-        return repository.findById(id).map(estudiante -> {
+    @PutMapping("/{id_formulario}")
+    public ResponseEntity<EstudianteFormulario> updateEstudiante(@PathVariable Long id_formulario, @RequestBody @Valid EstudianteFormulario estudianteDetails) {
+        return repository.findById(id_formulario).map(estudiante -> {
             estudiante.setNombre(estudianteDetails.getNombre());
             estudiante.setApellido(estudianteDetails.getApellido());
             estudiante.setTipoDocumento(estudianteDetails.getTipoDocumento());
@@ -57,9 +55,9 @@ public class EstudianteFormularioController {
         }).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteEstudiante(@PathVariable Long id) {
-        Optional<EstudianteFormulario> estudianteOpt = repository.findById(id);
+    @DeleteMapping("/{id_formulario}")
+    public ResponseEntity<Void> deleteEstudiante(@PathVariable Long id_formulario) {
+        Optional<EstudianteFormulario> estudianteOpt = repository.findById(id_formulario);
         if (estudianteOpt.isPresent()) {
             repository.delete(estudianteOpt.get());
             return ResponseEntity.noContent().build();
