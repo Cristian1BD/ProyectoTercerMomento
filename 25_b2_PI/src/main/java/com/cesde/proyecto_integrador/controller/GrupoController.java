@@ -25,8 +25,8 @@ public class GrupoController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Grupo> getGrupoById(@PathVariable Long id) {
-        Optional<Grupo> grupo = grupoRepository.findById(id);
+    public ResponseEntity<Grupo> getGrupoById(@PathVariable Long id_grupo) {
+        Optional<Grupo> grupo = grupoRepository.findById(id_grupo);
         return grupo.map(ResponseEntity::ok)
                     .orElseGet(() -> ResponseEntity.notFound().build());
     }
@@ -37,8 +37,8 @@ public class GrupoController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Grupo> updateGrupo(@PathVariable Long id, @RequestBody Grupo grupoDetails) {
-        return grupoRepository.findById(id)
+    public ResponseEntity<Grupo> updateGrupo(@PathVariable Long id_grupo, @RequestBody Grupo grupoDetails) {
+        return grupoRepository.findById(id_grupo)
                 .map(grupo -> {
                     grupo.setNombre(grupoDetails.getNombre());
                     grupo.setDescripcion(grupoDetails.getDescripcion());
@@ -49,8 +49,8 @@ public class GrupoController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Object> deleteGrupo(@PathVariable Long id) {
-        return grupoRepository.findById(id)
+    public ResponseEntity<Object> deleteGrupo(@PathVariable Long id_grupo) {
+        return grupoRepository.findById(id_grupo)
                 .map(grupo -> {
                     grupoRepository.delete(grupo);
                     return ResponseEntity.noContent().build();
