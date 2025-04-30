@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
+
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 @Entity
@@ -17,12 +19,14 @@ public class ProgramacionSalida {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "grupo_id", nullable = false)
-    private Grupo grupo;
+    @Column (nullable = false)
+    private long grupo;
 
     @Column(nullable = false)
     private int numeroEstudiantes;
+
+    @Column(nullable = false, length = 255)
+    private LocalDateTime dia_salida;
 
     @Column(nullable = false)
     private LocalTime horaSalida;

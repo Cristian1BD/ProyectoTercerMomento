@@ -41,6 +41,7 @@ public class ProgramacionSalidaController {
                 .map(programacionSalida -> {
                     programacionSalida.setGrupo(programacionSalidaDetails.getGrupo());
                     programacionSalida.setNumeroEstudiantes(programacionSalidaDetails.getNumeroEstudiantes());
+                    programacionSalida.setDia_salida(programacionSalidaDetails.getDia_salida());
                     programacionSalida.setHoraSalida(programacionSalidaDetails.getHoraSalida());
                     programacionSalida.setHoraLlegada(programacionSalidaDetails.getHoraLlegada());
                     programacionSalida.setDestino(programacionSalidaDetails.getDestino());
