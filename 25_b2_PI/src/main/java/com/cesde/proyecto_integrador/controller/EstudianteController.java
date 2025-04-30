@@ -9,8 +9,8 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("estudiantes")
-@CrossOrigin(origins = "http://localhost:4200") // Permitir peticiones desde Angular
+@RequestMapping("/api/estudiantes")
+@CrossOrigin(origins = "http://localhost:4200") 
 public class EstudianteController {
 
     private final EstudianteRepository estudianteRepository;

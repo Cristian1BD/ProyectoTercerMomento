@@ -13,7 +13,8 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/estudiantes")
+@RequestMapping("estudiantesFormulario")
+@CrossOrigin(origins = "http://localhost:4200")
 public class EstudianteFormularioController {
 
     private final EstudianteFormularioRepository repository;
