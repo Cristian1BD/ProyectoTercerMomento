@@ -1,17 +1,24 @@
 package com.cesde.proyecto_integrador.model;
 
-import java.time.LocalDateTime;
 import jakarta.persistence.*;
+import java.time.LocalDateTime;
 
-@Table(name = "Estudiante")
 @Entity
+@Table(name = "Estudiante")
 public class Estudiante {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_estudiante;
 
-    private long id_persona;
-    private long id_grupo;
+    @OneToOne
+    @JoinColumn(name = "id_persona", referencedColumnName = "id_persona")
+    private Persona persona;
+
+    @ManyToOne
+    @JoinColumn(name = "id_grupo", referencedColumnName = "id_grupo")
+    private Grupo grupo;
+
     private LocalDateTime fecha_registro;
 
     // Getters y Setters
@@ -23,20 +30,20 @@ public class Estudiante {
         this.id_estudiante = id_estudiante;
     }
 
-    public long getId_persona() {
-        return id_persona;
+    public Persona getPersona() {
+        return persona;
     }
 
-    public void setId_persona(long id_persona) {
-        this.id_persona = id_persona;
+    public void setPersona(Persona persona) {
+        this.persona = persona;
     }
 
-    public long getId_grupo() {
-        return id_grupo;
+    public Grupo getGrupo() {
+        return grupo;
     }
 
-    public void setId_grupo(long id_grupo) {
-        this.id_grupo = id_grupo;
+    public void setGrupo(Grupo grupo) {
+        this.grupo = grupo;
     }
 
     public LocalDateTime getFecha_registro() {

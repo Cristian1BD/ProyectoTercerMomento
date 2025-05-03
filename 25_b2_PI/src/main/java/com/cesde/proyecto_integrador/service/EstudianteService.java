@@ -28,12 +28,13 @@ public class EstudianteService {
 
     public Optional<Estudiante> actualizarEstudiante(Long id, Estudiante estudianteDetails) {
         return estudianteRepository.findById(id).map(estudiante -> {
-            estudiante.setId_persona(estudianteDetails.getId_persona());
-            estudiante.setId_grupo(estudianteDetails.getId_grupo());
+            estudiante.setPersona(estudianteDetails.getPersona());
+            estudiante.setGrupo(estudianteDetails.getGrupo());
             estudiante.setFecha_registro(estudianteDetails.getFecha_registro());
             return estudianteRepository.save(estudiante);
         });
     }
+    
 
     public boolean eliminarEstudiante(Long id) {
         return estudianteRepository.findById(id).map(estudiante -> {
