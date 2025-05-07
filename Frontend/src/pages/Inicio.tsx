@@ -1,5 +1,11 @@
-import { useState } from "react";
-import Navbar from "../components/Navbar";
+import { useState } from "react"; 
+import Navbar from "../components/ComponentsInicio/Navbar";
+import Idioma from "../components/ComponentsInicio/Idioma";
+
+import InicioContenido from "../components/ComponentsInicio/InicioContenido";
+import InicioCaracteristicas from "../components/ComponentsInicio/InicioCaracteristicas";
+import InicioBeneficios from "../components/ComponentsInicio/InicioBeneficios";
+import Footer from "../components/ComponentsInicio/Footer";
 
 const Inicio = () => {
   const [tab, setTab] = useState("inicio");
@@ -7,20 +13,19 @@ const Inicio = () => {
   const renderContent = () => {
     switch (tab) {
       case "idioma":
-        return <p>Selecciona tu idioma preferido aquí.</p>;
-      case "soporte":
-        return <p>Accede al soporte técnico para resolver tus dudas.</p>;
-      case "contáctanos":
-        return <p>Formulario de contacto o información de atención.</p>;
-      default:
-        return <p>Bienvenido a la plataforma. Esta es la página de inicio.</p>;
+        return <Idioma />;
     }
   };
 
   return (
     <div>
       <Navbar onChangeTab={setTab} activeTab={tab} />
+      <section id="inicio">{/* Imagen de portada */}</section>
       <div className="pt-20 px-6">{renderContent()}</div>
+      <InicioContenido/>
+      <InicioCaracteristicas />
+      <InicioBeneficios />
+      <Footer />
     </div>
   );
 };
