@@ -1,6 +1,5 @@
 import { useState } from "react"; 
 import Navbar from "../components/ComponentsInicio/Navbar";
-import Idioma from "../components/ComponentsInicio/Idioma";
 
 import InicioContenido from "../components/ComponentsInicio/InicioContenido";
 import InicioCaracteristicas from "../components/ComponentsInicio/InicioCaracteristicas";
@@ -13,7 +12,7 @@ const Inicio = () => {
   const renderContent = () => {
     switch (tab) {
       case "idioma":
-        return <Idioma />;
+        return <div>Contenido de Idioma</div>;
     }
   };
 
