@@ -1,35 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Sidebar from '../components/ComponentesPagInicio/Sidebar/Sidebar';
+import GrupoLista from '../components/ComponentesPagInicio/Grupos/GrupoLista';
 
 const PaginaInicio: React.FC = () => {
-  const inicioItems = [
-    { name: 'Grupos', href: '#' },
-    { name: 'Inscripciones', href: '#' },
-    { name: 'Horarios', href: '#' },
-    { name: 'Programación Salida', href: '#' },
-    { name: 'Sede', href: '#' },
-    { name: 'Formularios', href: '#' },
-  ];
+  const [seccionActual, setSeccionActual] = useState('');
+
+  const renderContenido = () => {
+    switch (seccionActual) {
+      case 'Ver Grupos':
+        return <GrupoLista />;
+      default:
+        return <div className="text-gray-400 text-center mt-10">Selecciona una opción del menú</div>;
+    }
+  };
 
   return (
     <div className="flex h-screen">
-      {/* Sidebar */}
-      <aside className="w-60 bg-white border-r p-4">
-        <h1 className="font-bold text-lg mb-6">Nombre De La plataforma</h1>
-        <nav className="flex flex-col gap-3">
-          {inicioItems.map((item, index) => (
-            <a
-              key={index}
-              href={item.href}
-              className="flex items-center gap-2 bg-black text-white py-2 px-4 rounded hover:bg-gray-800 transition"
-            >
-              <span className="w-3 h-3 bg-gray-300 rounded-full" />
-              {item.name}
-            </a>
-          ))}
-        </nav>
-      </aside>
+      <Sidebar onSelectItem={(item) => setSeccionActual(item)} />
 
-      {/* Main Content */}
       <div className="flex-1 flex flex-col">
         <header className="flex items-center justify-between p-4 border-b bg-white">
           <div className="text-sm text-gray-700">Grupo</div>
@@ -48,9 +36,7 @@ const PaginaInicio: React.FC = () => {
           </div>
         </header>
 
-        <main className="flex-1 p-4">
-          {/* Aquí va el contenido principal */}
-        </main>
+        <main className="flex-1 p-4 bg-gray-50">{renderContenido()}</main>
       </div>
     </div>
   );
