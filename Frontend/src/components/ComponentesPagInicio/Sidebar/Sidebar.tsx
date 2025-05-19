@@ -7,8 +7,34 @@ interface SidebarProps {
 
 const Sidebar: React.FC<SidebarProps> = ({ onSelectItem }) => {
   const menuItems = [
-    { title: 'Grupos', subItems: [{ name: 'Ver Grupos', href: '#' }] },
-    // puedes seguir agregando...
+    {
+      title: 'Grupos', subItems: [
+        { name: 'Ver Grupos', href: '#' },
+        { name: 'Crear Grupo', href: '#' },
+        { name: 'Eliminar Grupo', href: '#' },
+        { name: 'Modificar Grupo', href: '#' },
+      ]
+    },
+    {
+      title: 'Estudiante', subItems: [
+        { name: 'Ver Estudiantes', href: '#' },
+        { name: 'Asignar Estudiante', href: '#' },
+        { name: 'Modificar Estudiante', href: '#' },
+      ]
+    },
+    {
+      title: 'Horarios', subItems: [
+        { name: 'Ver Horario', href: '#' },
+      ]
+    },
+    {
+      title: 'Programacion Salida', subItems: [
+        { name: 'Crear Programacion', href: '#' },
+        { name: 'Eliminar Programacion', href: '#' },
+        { name: 'Modificar Programacion', href: '#' },
+        { name: 'Ver Programaciones', href: '#' },
+      ]
+    },
   ];
 
   return (

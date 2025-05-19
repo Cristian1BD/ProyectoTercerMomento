@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import Sidebar from '../components/ComponentesPagInicio/Sidebar/Sidebar';
-import GrupoLista from '../components/ComponentesPagInicio/Grupos/GrupoLista';
+import GrupoLista from '../components/ComponentesPagInicio/ComponetesSidebar/ProgramacionGrupos';
+import EstudiantesProgramacion from '../components/ComponentesPagInicio/ComponetesSidebar/EstudianteProgramacion';
+import HorarioProgramacion from '../components/ComponentesPagInicio/ComponetesSidebar/HorarioProgramacion';
+import SalidaProgrmacion from '../components/ComponentesPagInicio/ComponetesSidebar/SalidaProgrmacion';
 
 const PaginaInicio: React.FC = () => {
   const [seccionActual, setSeccionActual] = useState('');
@@ -9,11 +12,24 @@ const PaginaInicio: React.FC = () => {
     switch (seccionActual) {
       case 'Ver Grupos':
         return <GrupoLista />;
+      case 'Ver Estudiantes':
+        return <EstudiantesProgramacion />;
+      case 'Ver Horario':
+        return <HorarioProgramacion />;
+      case 'Crear Programacion':
+      case 'Eliminar Programacion':
+      case 'Modificar Programacion':
+      case 'Ver Programaciones':
+        return <SalidaProgrmacion tipo={seccionActual as any} />;
       default:
-        return <div className="text-gray-400 text-center mt-10">Selecciona una opción del menú</div>;
+        return (
+          <div className="text-gray-400 text-center mt-10">
+            Selecciona una opción del menú
+          </div>
+        );
     }
   };
-
+  
   return (
     <div className="flex h-screen">
       <Sidebar onSelectItem={(item) => setSeccionActual(item)} />
