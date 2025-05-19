@@ -1,9 +1,14 @@
 import React, { useState } from 'react';
 import Sidebar from '../components/ComponentesPagInicio/Sidebar/Sidebar';
-import GrupoLista from '../components/ComponentesPagInicio/ComponetesSidebar/ProgramacionGrupos';
-import EstudiantesProgramacion from '../components/ComponentesPagInicio/ComponetesSidebar/EstudianteProgramacion';
-import HorarioProgramacion from '../components/ComponentesPagInicio/ComponetesSidebar/HorarioProgramacion';
-import SalidaProgrmacion from '../components/ComponentesPagInicio/ComponetesSidebar/SalidaProgrmacion';
+import GruposCrear from '../components/ComponentesPagInicio/Grupos/CrearGrupos';
+import GruposVer from '../components/ComponentesPagInicio/Grupos/GruposVer';
+import GruposLista from '../components/ComponentesPagInicio/Grupos/GruposLista';
+import VerEstudiante from '../components/ComponentesPagInicio/Estudiantes/VerEstudiante';
+import AsignarEstudiante from '../components/ComponentesPagInicio/Estudiantes/AsignarEstudiante';
+import EliminarEstudiante from '../components/ComponentesPagInicio/Estudiantes/EliminarEstudiante';
+import EliminarProgramacion from '../components/ComponentesPagInicio/Programacion/EliminarProgramacion';
+import CrearProgramacion from '../components/ComponentesPagInicio/Programacion/CrearProgramacion';
+import VerProgramaciones from '../components/ComponentesPagInicio/Programacion/VerProgramaciones';
 
 const PaginaInicio: React.FC = () => {
   const [seccionActual, setSeccionActual] = useState('');
@@ -11,22 +16,23 @@ const PaginaInicio: React.FC = () => {
   const renderContenido = () => {
     switch (seccionActual) {
       case 'Ver Grupos':
-        return <GrupoLista />;
+        return <GruposVer />;
+      case 'Crear Grupo':
+        return <GruposCrear />;
+      case 'Eliminar/Modificar Grupo':
+        return <GruposLista />;
       case 'Ver Estudiantes':
-        return <EstudiantesProgramacion />;
-      case 'Ver Horario':
-        return <HorarioProgramacion />;
+        return <VerEstudiante />;
+      case 'Asignar Estudiante':
+        return <AsignarEstudiante />;
+      case 'Modificar Estudiante':
+        return <EliminarEstudiante />;
       case 'Crear Programacion':
+        return <CrearProgramacion />;
       case 'Eliminar Programacion':
-      case 'Modificar Programacion':
+        return <EliminarProgramacion />;
       case 'Ver Programaciones':
-        return <SalidaProgrmacion tipo={seccionActual as any} />;
-      default:
-        return (
-          <div className="text-gray-400 text-center mt-10">
-            Selecciona una opción del menú
-          </div>
-        );
+        return <VerProgramaciones />;
     }
   };
   

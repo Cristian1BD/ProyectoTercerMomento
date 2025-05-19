@@ -11,8 +11,7 @@ const Sidebar: React.FC<SidebarProps> = ({ onSelectItem }) => {
       title: 'Grupos', subItems: [
         { name: 'Ver Grupos', href: '#' },
         { name: 'Crear Grupo', href: '#' },
-        { name: 'Eliminar Grupo', href: '#' },
-        { name: 'Modificar Grupo', href: '#' },
+        { name: 'Eliminar/Modificar Grupo', href: '#' },
       ]
     },
     {
@@ -23,15 +22,9 @@ const Sidebar: React.FC<SidebarProps> = ({ onSelectItem }) => {
       ]
     },
     {
-      title: 'Horarios', subItems: [
-        { name: 'Ver Horario', href: '#' },
-      ]
-    },
-    {
-      title: 'Programacion Salida', subItems: [
+      title: 'Programacion ', subItems: [
         { name: 'Crear Programacion', href: '#' },
         { name: 'Eliminar Programacion', href: '#' },
-        { name: 'Modificar Programacion', href: '#' },
         { name: 'Ver Programaciones', href: '#' },
       ]
     },
