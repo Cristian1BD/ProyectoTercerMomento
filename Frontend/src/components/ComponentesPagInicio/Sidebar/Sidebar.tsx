@@ -28,12 +28,26 @@ const Sidebar: React.FC<SidebarProps> = ({ onSelectItem }) => {
         { name: 'Ver Programaciones', href: '#' },
       ]
     },
+    {
+      title: 'Actividades', subItems: [
+        { name: 'Lista Actividades', href: '#' },
+        { name: 'Modificar Notas', href: '#' },
+        { name: 'Eliminar Notas', href: '#' },
+      ]
+    },
+    {
+      title: 'Horarios', subItems: [
+        { name: 'Horario', href: '#' },
+      ]
+    },
   ];
 
   return (
-    <aside className="w-60 bg-white border-r p-4">
-      <h1 className="font-bold text-lg mb-6">Nombre De La plataforma</h1>
-      <nav className="flex flex-col gap-3">
+    <aside className="w-64 min-h-screen bg-gradient-to-b from-blue-900 via-blue-800 to-blue-600 text-white shadow-md">
+      <div className="p-6 border-b border-blue-500">
+        <h1 className="text-2xl font-extrabold tracking-wide text-white">Nombre De La Plataforma</h1>
+      </div>
+      <nav className="flex flex-col gap-2 p-4">
         {menuItems.map((item, index) => (
           <SidebarItem
             key={index}

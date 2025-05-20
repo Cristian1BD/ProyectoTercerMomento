@@ -9,6 +9,8 @@ import EliminarEstudiante from '../components/ComponentesPagInicio/Estudiantes/E
 import EliminarProgramacion from '../components/ComponentesPagInicio/Programacion/EliminarProgramacion';
 import CrearProgramacion from '../components/ComponentesPagInicio/Programacion/CrearProgramacion';
 import VerProgramaciones from '../components/ComponentesPagInicio/Programacion/VerProgramaciones';
+import EncabezadoSalidas from '../components/ComponentesPagInicio/Actividades/EncabezadoSalidas';
+import HorariosProgramacion from '../components/ComponentesPagInicio/Horario/HorariosProgramacion';
 
 const PaginaInicio: React.FC = () => {
   const [seccionActual, setSeccionActual] = useState('');
@@ -33,32 +35,36 @@ const PaginaInicio: React.FC = () => {
         return <EliminarProgramacion />;
       case 'Ver Programaciones':
         return <VerProgramaciones />;
+      case 'Lista Actividades':
+        return <EncabezadoSalidas />;
+      case 'Horario':
+        return <HorariosProgramacion />;
     }
   };
-  
+
   return (
     <div className="flex h-screen">
       <Sidebar onSelectItem={(item) => setSeccionActual(item)} />
 
-      <div className="flex-1 flex flex-col">
-        <header className="flex items-center justify-between p-4 border-b bg-white">
-          <div className="text-sm text-gray-700">Grupo</div>
+      <div className="flex-1 flex flex-col bg-gradient-to-b from-blue-100 via-white to-white">
+        {/* Encabezado */}
+        <header className="flex items-center justify-between px-6 py-4 border-b border-blue-200 bg-white shadow-sm">
+          <div className="text-base font-semibold text-blue-900">Grupo</div>
           <div className="flex items-center gap-4">
-            <input
-              type="text"
-              placeholder="Search..."
-              className="border rounded px-3 py-1 text-sm"
-            />
-            <button className="bg-black text-white px-3 py-1 rounded">Docente</button>
+            
+            <button className="bg-blue-900 hover:bg-blue-800 text-white px-4 py-2 rounded-lg text-sm shadow">
+              Docente
+            </button>
             <img
               src="https://via.placeholder.com/32"
               alt="Avatar"
-              className="w-8 h-8 rounded-full object-cover"
+              className="w-9 h-9 rounded-full object-cover border border-blue-500"
             />
           </div>
         </header>
 
-        <main className="flex-1 p-4 bg-gray-50">{renderContenido()}</main>
+        {/* Contenido principal */}
+        <main className="flex-1 p-6 overflow-y-auto">{renderContenido()}</main>
       </div>
     </div>
   );
