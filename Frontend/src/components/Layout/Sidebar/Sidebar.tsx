@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import SidebarItem from './SidebarItem';
 
 interface SidebarProps {
@@ -6,6 +6,12 @@ interface SidebarProps {
 }
 
 const Sidebar: React.FC<SidebarProps> = ({ onSelectItem }) => {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+  const handleToggle = (index: number) => {
+    setOpenIndex(prev => (prev === index ? null : index));
+  };
+
   const menuItems = [
     {
       title: 'Grupos', subItems: [
@@ -22,7 +28,7 @@ const Sidebar: React.FC<SidebarProps> = ({ onSelectItem }) => {
       ]
     },
     {
-      title: 'Programacion ', subItems: [
+      title: 'Programacion', subItems: [
         { name: 'Crear Programacion', href: '#' },
         { name: 'Eliminar Programacion', href: '#' },
         { name: 'Ver Programaciones', href: '#' },
@@ -54,6 +60,8 @@ const Sidebar: React.FC<SidebarProps> = ({ onSelectItem }) => {
             title={item.title}
             subItems={item.subItems}
             onSelect={onSelectItem}
+            isOpen={openIndex === index}
+            onToggle={() => handleToggle(index)}
           />
         ))}
       </nav>

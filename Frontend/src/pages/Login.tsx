@@ -54,9 +54,6 @@ const Login: React.FC = () => {
           <div className="absolute inset-0 flex items-center">
             <div className="w-full border-t border-gray-300" />
           </div>
-          <div className="relative flex justify-center text-xs text-gray-500 bg-white px-2">
-            <span>o continúa con</span>
-          </div>
         </div>
       </div>
     </div>
